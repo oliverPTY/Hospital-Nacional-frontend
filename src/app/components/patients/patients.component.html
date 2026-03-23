@@ -8,4 +8,8 @@
       <app-card [patients]="item"></app-card>
     }
   </div>
+  <div class="footer">
+    <app-paginator [page]="page()" [totalPages]="totalPages()" (pageChange)="onPageChange($event)">
+    </app-paginator>
+  </div>
 </div>

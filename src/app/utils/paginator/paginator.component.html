@@ -1,0 +1,11 @@
+<div class="paginator">
+  <button (click)="prev()" [disabled]="page === 1">⬅ Anterior</button>
+
+  @for (p of pages; track $index) {
+    <button (click)="goTo(p)" [class.active]="p === page">
+      {{ p }}
+    </button>
+  }
+
+  <button (click)="next()" [disabled]="page === totalPages">Siguiente ➡</button>
+</div>

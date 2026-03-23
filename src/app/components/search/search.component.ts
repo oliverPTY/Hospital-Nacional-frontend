@@ -20,7 +20,7 @@ export class SearchComponent {
   roomsType: string[] | null = null;
   patients: any[] = [];
   loading = false;
-  total = 0;
+  totalPages = 1;
   page = 1;
   limit = 12;
   constructor(
@@ -64,19 +64,19 @@ export class SearchComponent {
     });
   }
 
-private loadRooms(): void {
-  this.patientsService.getRooms().subscribe({
-    next: (res: RoomGroup[]) => {
-      this.rooms = res;
-      if (res.length) {
-        this.form.patchValue({
-          room: res[0].id
-        });
-      }
-    },
-    error: (err) => console.error(err),
-  });
-}
+  private loadRooms(): void {
+    this.patientsService.getRooms().subscribe({
+      next: (res: RoomGroup[]) => {
+        this.rooms = res;
+        if (res.length) {
+          this.form.patchValue({
+            room: res[0].id,
+          });
+        }
+      },
+      error: (err) => console.error(err),
+    });
+  }
 
   private loadPatients(filters: any): void {
     const { room, ...query } = filters;
@@ -90,7 +90,13 @@ private loadRooms(): void {
       .subscribe({
         next: (res: Patient) => {
           this.patients = res.data;
-          this.patientsService.patients.set(res);
+          this.totalPages = res.totalPages;
+          this.patientsService.patients.set({
+            ...res,
+            room,
+            filters: query,
+            limit: this.limit,
+          });
         },
         error: (err) => {
           console.error(err);

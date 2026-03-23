@@ -8,7 +8,15 @@ import { Patient, RoomGroup } from '../../interface/patients.interface';
   providedIn: 'root',
 })
 export class PatientsService {
-public patients: WritableSignal<Patient> = signal<Patient>({ data: [], total: 0, page: 0, totalPages: 0 });
+  public patients: WritableSignal<Patient> = signal<Patient>({
+    data: [],
+    total: 0,
+    page: 1,
+    totalPages: 1,
+    filters: {},
+    room: null,
+    limit: 12,
+  });
   constructor(private readonly request: RequestService) {}
 
   public getRooms(): Observable<RoomGroup[]> {
@@ -21,7 +29,7 @@ public patients: WritableSignal<Patient> = signal<Patient>({ data: [], total: 0,
     );
   }
 
-    public getRoomsUnits(roomId: string): Observable<RoomGroup> {
+  public getRoomsUnits(roomId: string): Observable<RoomGroup> {
     return this.request.request<ApiResponse<RoomGroup>>('GET', `rooms/${roomId}`).pipe(
       map((res) => res.data),
       catchError((error) => {
@@ -44,4 +52,21 @@ public patients: WritableSignal<Patient> = signal<Patient>({ data: [], total: 0,
         }),
       );
   }
+
+public changePage(page: number): void {
+  const current = this.patients();
+
+  this.loadPatients(current.room!, {
+    ...current.filters,
+    page,
+    limit: current.limit,
+  }).subscribe(res => {
+    this.patients.set({
+      ...res,
+      filters: current.filters,
+      room: current.room,
+      limit: current.limit
+    });
+  });
+}
 }

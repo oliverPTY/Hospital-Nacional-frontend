@@ -9,6 +9,9 @@ export interface Patient {
   total: number;
   page: number;
   totalPages: number;
+  filters?: any;
+  room?: string | null;
+  limit?: number;
 }
 
 export interface PacientItems {
