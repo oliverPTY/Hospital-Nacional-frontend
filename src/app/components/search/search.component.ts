@@ -22,7 +22,7 @@ export class SearchComponent {
   loading = false;
   total = 0;
   page = 1;
-  limit = 10;
+  limit = 12;
   constructor(
     private readonly fb: FormBuilder,
     private readonly patientsService: PatientsService,

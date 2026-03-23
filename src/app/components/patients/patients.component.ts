@@ -1,7 +1,6 @@
 import { Component, computed, effect, inject } from '@angular/core';
 import { CardComponent } from '../../utils/card/card.component';
 import { PatientsService } from '../../services/patients/patients.service';
-import { PacientItems } from '../../interface/patients.interface';
 
 @Component({
   selector: 'app-patients',

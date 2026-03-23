@@ -1,16 +1,15 @@
 .card-container {
-  margin-top: 32px;
-
+  margin-top: 5px;
   .card {
     max-width: 480px;
-    height: 300px;
+    height: 310px;
     border-radius: 10px;
     border: 2px solid var(--concrete);
     background: var(--white);
     box-shadow:
       0 1px 3px 0 rgba(0, 0, 0, 0.1),
       0 1px 2px -1px rgba(0, 0, 0, 0.1);
-    padding: 18px 18px 2px 18px;
+    padding: 18px 18px 18px 18px;
 
     &-header {
       display: flex;
@@ -64,21 +63,21 @@
           font-weight: 600;
         }
 
-        span:nth-child(2) {
-          border-radius: 10px;
-          border: 2px solid #ffa2a2;
-          background: #ffe2e2;
-          display: flex;
-          padding: 6px 9.406px 6px 14px;
-          font-size: clamp(11px, 0.9vw, 12px);
-          font-weight: 700;
-          color: #9f0712;
-
-          img {
-            width: 8px;
-            margin-right: 5px;
-          }
-        }
+        // span:nth-child(2) {
+        //   border-radius: 10px;
+        //   border: 2px solid #ffa2a2;
+        //   background: #ffe2e2;
+        //   display: flex;
+        //   padding: 6px 9.406px 6px 14px;
+        //   font-size: clamp(11px, 0.9vw, 12px);
+        //   font-weight: 700;
+        //   color: #9f0712;
+        //   text-transform: uppercase;
+        //   img {
+        //     width: 8px;
+        //     margin-right: 5px;
+        //   }
+        // }
       }
     }
 
@@ -134,5 +133,53 @@
         }
       }
     }
+  }
+}
+
+.status-critico {
+  border-radius: 10px;
+  border: 2px solid #ffa2a2;
+  background: #ffe2e2;
+  display: flex;
+  padding: 6px 9.406px 6px 14px;
+  font-size: clamp(11px, 0.9vw, 12px);
+  font-weight: 700;
+  color: #9f2d00;
+  text-transform: uppercase;
+  img {
+    width: 8px;
+    margin-right: 5px;
+  }
+}
+
+.status-estable {
+  border-radius: 10px;
+  border: 2px solid #7bf1a8;
+  background: #dcfce7;
+  display: flex;
+  padding: 6px 9.406px 6px 14px;
+  font-size: clamp(11px, 0.9vw, 12px);
+  font-weight: 700;
+  color: #016630;
+  text-transform: uppercase;
+  img {
+    width: 8px;
+    margin-right: 5px;
+  }
+}
+
+.status-grave {
+  border-radius: 10px;
+  border: 2px solid #ffb86a;
+  background: #ffedd4;
+  display: flex;
+  padding: 6px 9.406px 6px 14px;
+  font-size: clamp(11px, 0.9vw, 12px);
+  font-weight: 700;
+  color: #9f0712;
+  text-transform: uppercase;
+  img {
+    width: 8px;
+    margin-right: 5px;
   }
 }

@@ -5,12 +5,12 @@
         <img src="assets/icons/user.svg" />
         <div class="info">
           <p>{{ patients().fullName }}</p>
-          <p>{{ patients().age }} - {{ getGender(patients().gender) }}</p>
+          <p>{{ patients().age }} años - {{ getGender(patients().gender) }}</p>
         </div>
       </div>
       <div class="user-status">
         <span>{{ patients().bed }}</span>
-        <span><img src="assets/icons/status.svg" />CRÍTICO</span>
+        <span class="status-{{ patients().status }}"><img src="{{ getStatusPoint(patients().status) }}" />{{ patients().status }}</span>
       </div>
     </div>
     <div class="card-body">

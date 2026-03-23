@@ -20,5 +20,6 @@ export interface PacientItems {
   diagnosis: string;
   instructions: string[];
   room: string;
+  status: string;
   bed: string;
 }
