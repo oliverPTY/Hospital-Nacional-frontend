@@ -1,0 +1,42 @@
+<div class="card-container">
+  <div class="card">
+    <div class="card-header">
+      <div class="user-information">
+        <img src="assets/icons/user.svg" />
+        <div class="info">
+          <p>{{ patients().fullName }}</p>
+          <p>{{ patients().age }} - {{ getGender(patients().gender) }}</p>
+        </div>
+      </div>
+      <div class="user-status">
+        <span>{{ patients().bed }}</span>
+        <span><img src="assets/icons/status.svg" />CRÍTICO</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="body-items">
+        <img src="assets/icons/doctor.svg" />
+        <div class="info">
+          <span>Doctor Tratante</span>
+          <span>Dr. Carlos Rodríguez</span>
+        </div>
+      </div>
+      <div class="body-items">
+        <img src="assets/icons/diagnostico.svg" />
+        <div class="info">
+          <span>Diagnóstico</span>
+          <span>{{ patients().diagnosis }}</span>
+        </div>
+      </div>
+      <div class="body-items">
+        <img src="assets/icons/route.svg" />
+        <div class="info">
+          <span>Indicaciones Médicas</span>
+          @for (item of patients().instructions; track $index) {
+            <span><img src="assets/icons/indications.svg" />{{ item }}</span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

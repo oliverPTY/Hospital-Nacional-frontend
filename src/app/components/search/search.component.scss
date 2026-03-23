@@ -1,0 +1,77 @@
+@mixin container {
+  margin-bottom: 14px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.filters-container {
+  background: var(--white);
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--concrete);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10);
+}
+
+.filters:nth-child(1) {
+  @include container();
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  label {
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.filters:nth-child(2) {
+  @include container();
+  margin-top: 42px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  label {
+    font-weight: 600;
+  }
+}
+
+.filters:nth-child(3) {
+  @include container();
+  margin-top: 15px;
+  margin-bottom: 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  label {
+    font-weight: 600;
+  }
+}
+
+label {
+  font-size: 14px;
+  color: var(--green);
+  font-weight: 500;
+}
+
+input,
+select {
+  height: 52px;
+  max-width: 100%;
+  padding: 0 12px;
+  border: 2px solid var(--concrete-dark);
+  border-radius: 8px;
+  background: var(--white);
+  font-size: 14px;
+  color: var(--background);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(47, 111, 109, 0.15);
+}
+

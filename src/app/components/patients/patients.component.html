@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="title">
+    <h1>UCI - Unidad de Cuidados Intensivos</h1>
+    <span>8 pacientes internados (filtrado)</span>
+  </div>
+  <div class="body">
+    @for (item of this.patients(); track item.id) {
+      <app-card [patients]="item"></app-card>
+    }
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<form [formGroup]="form" class="filters-container">
+  <div class="filters">
+    <label>
+      <img src="assets/icons/room.svg" />
+      Seleccionar Sala:
+    </label>
+
+    <select formControlName="room">
+      @for (room of rooms; track room.id) {
+        <option [ngValue]="room.id">
+          {{ room.name }}
+        </option>
+      }
+    </select>
+  </div>
+
+  <div class="filters">
+    <input type="text" placeholder="Buscar por nombre..." formControlName="search" />
+
+    <select formControlName="doctor">
+      <option value="">Todos los doctores</option>
+      @for (doctors of doctors; track $index) {
+        <option [ngValue]="doctors.id">
+          {{ doctors.fullName }}
+        </option>
+      }
+    </select>
+
+    <select formControlName="bed">
+      <option value="">Todas las habitaciones</option>
+      @for (roomsType of roomsType; track $index) {
+        <option [ngValue]="roomsType">
+          {{ roomsType }}
+        </option>
+      }
+    </select>
+
+    <select formControlName="status">
+      <option value="">Todos los estados</option>
+      <option value="critical">Crítico</option>
+    </select>
+  </div>
+
+  <div class="filters">
+    <select formControlName="sort">
+      <option value="">Ordenar por Habitación</option>
+      <option value="bed">Habitación</option>
+      <option value="age">Edad</option>
+    </select>
+  </div>
+</form>
