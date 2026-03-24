@@ -16,7 +16,7 @@ export class PaginatorComponent {
   private autoSub?: Subscription;
 
   public ngOnInit(): void {
-    this.autoSub = interval(500000).subscribe(() => {
+    this.autoSub = interval(5000).subscribe(() => {
       this.autoNext();
     });
   }
@@ -54,6 +54,6 @@ export class PaginatorComponent {
 
   private resetInterval() {
     this.autoSub?.unsubscribe();
-    this.autoSub = interval(10000).subscribe(() => this.autoNext());
+    this.autoSub = interval(5000).subscribe(() => this.autoNext());
   }
 }
