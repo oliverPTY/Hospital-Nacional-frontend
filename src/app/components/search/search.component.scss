@@ -75,3 +75,8 @@ select:focus {
   box-shadow: 0 0 0 2px rgba(47, 111, 109, 0.15);
 }
 
+@media screen and (max-width: 1050px) {
+  .filters:nth-child(2) {
+  grid-template-columns: repeat(2, 1fr);
+}
+}
