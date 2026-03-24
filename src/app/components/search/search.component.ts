@@ -14,15 +14,15 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
   styleUrl: './search.component.scss',
 })
 export class SearchComponent {
-  form!: FormGroup;
-  rooms: RoomGroup[] = [];
-  doctors: Doctor[] = [];
-  roomsType: string[] | null = null;
-  patients: any[] = [];
-  loading = false;
-  totalPages = 1;
-  page = 1;
-  limit = 12;
+  public form!: FormGroup;
+  public rooms: RoomGroup[] = [];
+  public doctors: Doctor[] = [];
+  public roomsType: string[] | null = null;
+  public patients: any[] = [];
+  public loading = false;
+  public totalPages = 1;
+  public page = 1;
+  public limit = 9;
   constructor(
     private readonly fb: FormBuilder,
     private readonly patientsService: PatientsService,

@@ -2,7 +2,8 @@
   margin-top: 5px;
   .card {
     max-width: 480px;
-    height: 310px;
+    min-width: 325px;
+    height: 340px;
     border-radius: 10px;
     border: 2px solid var(--concrete);
     background: var(--white);
@@ -62,22 +63,6 @@
           font-size: clamp(12px, 1vw, 14px);
           font-weight: 600;
         }
-
-        // span:nth-child(2) {
-        //   border-radius: 10px;
-        //   border: 2px solid #ffa2a2;
-        //   background: #ffe2e2;
-        //   display: flex;
-        //   padding: 6px 9.406px 6px 14px;
-        //   font-size: clamp(11px, 0.9vw, 12px);
-        //   font-weight: 700;
-        //   color: #9f0712;
-        //   text-transform: uppercase;
-        //   img {
-        //     width: 8px;
-        //     margin-right: 5px;
-        //   }
-        // }
       }
     }
 
@@ -136,50 +121,113 @@
   }
 }
 
-.status-critico {
+@mixin status {
+  text-transform: uppercase;
   border-radius: 10px;
-  border: 2px solid #ffa2a2;
-  background: #ffe2e2;
   display: flex;
   padding: 6px 9.406px 6px 14px;
   font-size: clamp(11px, 0.9vw, 12px);
   font-weight: 700;
-  color: #9f2d00;
-  text-transform: uppercase;
   img {
     width: 8px;
     margin-right: 5px;
   }
+}
+
+.status-critico {
+  @include status();
+  border: 2px solid #ffa2a2;
+  background: #ffe2e2;
+  color: #9f2d00;
 }
 
 .status-estable {
-  border-radius: 10px;
+  @include status();
   border: 2px solid #7bf1a8;
   background: #dcfce7;
-  display: flex;
-  padding: 6px 9.406px 6px 14px;
-  font-size: clamp(11px, 0.9vw, 12px);
-  font-weight: 700;
   color: #016630;
-  text-transform: uppercase;
-  img {
-    width: 8px;
-    margin-right: 5px;
-  }
 }
 
 .status-grave {
-  border-radius: 10px;
+  @include status();
   border: 2px solid #ffb86a;
   background: #ffedd4;
-  display: flex;
-  padding: 6px 9.406px 6px 14px;
-  font-size: clamp(11px, 0.9vw, 12px);
-  font-weight: 700;
   color: #9f0712;
-  text-transform: uppercase;
-  img {
-    width: 8px;
-    margin-right: 5px;
+}
+
+@media screen and (min-width: 2160px) {
+  .card {
+    max-width: 520px !important;
+    height: 380px !important;
+  }
+}
+
+@media screen and (min-width: 3000px) {
+  .card {
+    max-width: 600px !important;
+    height: 480px !important;
+    .user-information {
+          img {
+          width: 65px !important; 
+        }
+      .info {
+        p:nth-child(1) {
+          font-size: clamp(16px, 2.1vw, 28px) !important;
+        }
+
+        p:nth-child(2) {
+          font-size: clamp(12px, 1.8vw, 24px) !important;
+        }
+      }
+    }
+    .user-status {
+      span:nth-child(1) {
+        max-width: 120px !important;
+        font-size: clamp(12px, 1.8vw, 24px) !important;
+      }
+    }
+
+    &-body {
+      margin-top: 15px;
+      .body-items {
+             img {
+          width: 30px !important;
+        }
+
+        .info {
+          margin-bottom: 10px;
+          span:nth-child(1) {
+            font-size: clamp(11px, 1.7vw, 22px) !important;
+          }
+
+          span:nth-child(2) {
+            font-size: clamp(12px, 1.8vw, 24px) !important;
+          }
+        }
+      }
+
+      .body-items:nth-child(3) {
+        .info {
+          span:nth-child(n + 2) {
+            font-size: clamp(11px, 1.7vw, 22px) !important;
+            img {
+              height: 19px;
+              width: 13px;
+              position: relative;
+              top: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .status-grave,
+  .status-estable,
+  .status-critico {
+    font-size: clamp(11px, 1.7vw, 22px)!important;
+    img {
+      width: 18px;
+      margin-right: 5px;
+    }
   }
 }

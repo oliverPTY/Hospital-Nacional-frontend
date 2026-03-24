@@ -17,3 +17,19 @@
     gap: 10px;
   }
 }
+
+@media screen and (min-width: 1650px) {
+  .container {
+    .body {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+@media screen and (min-width: 2160px) {
+  .container {
+    .body {
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)) !important;
+    }
+  }
+}
