@@ -1,13 +1,21 @@
 <div class="container">
   <div class="title">
     <h1>UCI - Unidad de Cuidados Intensivos</h1>
-    <span>8 pacientes internados (filtrado)</span>
+    <span>{{ this.patients().length }} pacientes internados (filtrado)</span>
   </div>
-  <div class="body">
-    @for (item of this.patients(); track item.id) {
-      <app-card [patients]="item"></app-card>
-    }
-  </div>
+  @if (patientsService.loading()) {
+    <div class="skeleton-grid">
+      @for (item of [1, 2, 3, 4, 5, 6]; track $index) {
+        <div class="skeleton-card"></div>
+      }
+    </div>
+  } @else {
+    <div class="body">
+      @for (item of patients(); track item.id) {
+        <app-card [patients]="item"></app-card>
+      }
+    </div>
+  }
   <div class="footer">
     <app-paginator [page]="page()" [totalPages]="totalPages()" (pageChange)="onPageChange($event)">
     </app-paginator>

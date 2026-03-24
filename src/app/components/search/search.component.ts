@@ -4,7 +4,7 @@ import { PatientsService } from '../../services/patients/patients.service';
 import { Patient, RoomGroup } from '../../interface/patients.interface';
 import { DoctorService } from '../../services/doctor/doctor.service';
 import { Doctor } from '../../interface/doctor.interface';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
+import { debounceTime, delay, distinctUntilChanged, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -59,7 +59,7 @@ export class SearchComponent {
   }
 
   private listenFormChanges(): void {
-    this.form.valueChanges.pipe(debounceTime(300)).subscribe((filters) => {
+    this.form.valueChanges.subscribe((filters) => {
       this.loadPatients(filters);
     });
   }
@@ -79,6 +79,7 @@ export class SearchComponent {
   }
 
   private loadPatients(filters: any): void {
+    this.patientsService.loading.set(true);
     const { room, ...query } = filters;
     this.loading = true;
     this.patientsService
@@ -87,6 +88,7 @@ export class SearchComponent {
         page: this.page,
         limit: this.limit,
       })
+      .pipe(delay(800))
       .subscribe({
         next: (res: Patient) => {
           this.patients = res.data;
@@ -97,6 +99,7 @@ export class SearchComponent {
             filters: query,
             limit: this.limit,
           });
+          this.patientsService.loading.set(false);
         },
         error: (err) => {
           console.error(err);

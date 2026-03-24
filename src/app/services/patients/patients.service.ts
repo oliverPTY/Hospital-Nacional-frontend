@@ -17,6 +17,7 @@ export class PatientsService {
     room: null,
     limit: 12,
   });
+  public loading = signal(true);
   constructor(private readonly request: RequestService) {}
 
   public getRooms(): Observable<RoomGroup[]> {
